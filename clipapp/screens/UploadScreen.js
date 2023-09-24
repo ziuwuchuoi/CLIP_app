@@ -128,13 +128,13 @@ async function requestStoragePermission() {
             <Image source={IMG_LOGO}></Image>
           </View>
           <View style={styles.titleContainer}>
-            <Text style={styles.appName}>A M</Text>
-            <Text style={styles.appTitle}>G   E   N   E   R   A   T   E   M   U   S   I   C</Text>
+            <Text style={styles.appName}>C L I P</Text>
+            <Text style={styles.appTitle}>I M A G E  C L A S S I F I E R</Text>
           </View>
         </View>
         <View style={styles.bottomContainer}>
           <Text style={styles.reviewTitle}>
-            This app will generate {'\n'}music based on your music files!
+            This app will predict {'\n'}the class based on your image!
           </Text>
           <TouchableOpacity style={styles.buttonContainer}
           onPress={()=> pickDocument()}>
@@ -142,7 +142,7 @@ async function requestStoragePermission() {
             <Image source={IC_UPLOAD}></Image>
             <Text style={styles.buttonText}>Upload files</Text>
           </TouchableOpacity>
-          <Text style={styles.note}>Upload one or more midi files to generate music.</Text>
+          <Text style={styles.note}>Upload image file fỏ the app to predict the class name.</Text>
         </View>
       </SafeAreaView>
     );

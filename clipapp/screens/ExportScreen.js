@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -7,31 +7,30 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import scale from '../src/constants/responsive';
-import { IC_BACK, IC_MUSIC } from '../src/assets/icons';
+import scale from '../scr/constants/responsive';
+import {IC_BACK, IC_DOWNLOAD} from '../scr/assets/icons';
+import {IMG_MUSIC} from '../scr/assets/images';
+import { useNavigation } from '@react-navigation/native';
 
-const StartingScreen = () => {
+export const ExportScreen = ({props}) => {
+  const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topContainer}>
         <View style={styles.headerContainer}>
-          <TouchableOpacity
-            style={styles.iconButton}
-            onPress={() => {
-              navigation.goBack();
-            }}>
+          <TouchableOpacity style={styles.iconButton} onPress={() => {navigation.navigate('Upload')}}>
             <Image source={IC_BACK}></Image>
           </TouchableOpacity>
         </View>
-        <Text style={styles.title}>Let’s {'\n'}classifier the image!</Text>
+        <Text style={styles.title}>Success!</Text>
       </View>
       <View style={styles.bottomContainer}>
-          <Text style={styles.fileStatus}>You have already uploaded the image.</Text>
-          <Text style={styles.blackText}>Let’s click<Text style={styles.orangeText}> the button </Text>to {'\n'}predict {'\n'}based on your image!</Text>
-          <TouchableOpacity style={styles.buttonContainer}
-          onPress={()=> navigation.navigate("Export")}>
-          <Image source={IC_MUSIC}></Image>
-          <Text style={styles.buttonText}>Predict</Text>
+        <View style={styles.block}>
+          <Image source={IMG_MUSIC}></Image>
+        </View>
+        <Text style={styles.fileName}>Prediction: CAT</Text>
+        <TouchableOpacity style={styles.buttonContainer} onPress={() => {}}>
+          <Text style={styles.buttonText}>Done</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -55,38 +54,23 @@ const styles = StyleSheet.create({
     width: scale(30, 'w'),
     height: scale(30, 'h'),
   },
-  title: {
-    color: 'white',
-    fontSize: scale(40, 'w'),
-    marginLeft: scale(24, 'w'),
-    marginTop: scale(4, 'h'),
-    fontWeight: 'bold',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    textAlign: 'center',
-  },
   bottomContainer: {
     flex: 0.7,
     backgroundColor: 'white',
     borderTopStartRadius: scale(40, 'w'),
     borderTopEndRadius: scale(40, 'w'),
   },
-  fileStatus: {
-    marginTop: scale(38, 'h'),
-    fontSize: scale(18, 'h'),
-    color: 'black',
-    fontWeight: '400',
-    textAlign: 'center',
+  title: {
+    color: 'white',
+    fontSize: scale(40, 'w'),
+    marginLeft: scale(24, 'w'),
+    marginTop: scale(26, 'h'),
+    fontWeight: 'bold',
   },
-  blackText: {
-    marginTop: scale(38, 'h'),
-    fontSize: scale(28, 'h'),
+  subTitle: {
     color: 'black',
-    fontWeight: '900',
-    textAlign: 'center',
-  },
-  orangeText: {
-    color: '#FFA500',
+    fontSize: scale(18, 'w'),
+    marginLeft: scale(24, 'w'),
   },
   block: {
     width: scale(228, 'w'),
@@ -98,10 +82,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: scale(41, 'h'),
   },
+  fileName: {
+    marginTop: scale(9, 'h'),
+    fontSize: scale(18, 'h'),
+    color: 'black',
+    fontWeight: '400',
+    textAlign: 'center',
+  },
   buttonContainer: {
     width: scale(199, 'w'),
     height: scale(52, 'h'),
-    marginTop: scale(200, 'h'),
+    marginTop: scale(80, 'h'),
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
@@ -117,4 +108,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StartingScreen;
+export default ExportScreen;
